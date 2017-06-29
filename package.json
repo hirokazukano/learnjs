@@ -1,0 +1,19 @@
+{
+  "name": "learnjs",
+  "version": "1.0.0",
+  "description": "study learnjs",
+  "scripts": {
+    "server": "browser-sync start --server './public/' --files './public/*.html, ./public/*.js, ./public/*.css, ./public/images/*'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hirokazukano/learnjs.git"
+  },
+  "keywords": [],
+  "author": "Hirokazu Kano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hirokazukano/learnjs/issues"
+  },
+  "homepage": "https://github.com/hirokazukano/learnjs#readme"
+}
