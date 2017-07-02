@@ -3,7 +3,8 @@
   "version": "1.0.0",
   "description": "study learnjs",
   "scripts": {
-    "server": "browser-sync start --server './public/' --files './public/*.html, ./public/*.js, ./public/*.css, ./public/images/*'"
+    "server": "browser-sync start --server './public/' --files './public/*.html, ./public/*.js, ./public/*.css, ./public/images/*'",
+    "server-test": "browser-sync start --server './public/' --files './public/tests/*.js, ./public/*.js'"
   },
   "repository": {
     "type": "git",
