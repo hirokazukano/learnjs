@@ -12,6 +12,6 @@ deploy url: [http://learnjs.study.jp.s3-website-ap-northeast-1.amazonaws.com/](h
 
 ### S3 bucket create and deploy
 
-* create `$ ./sspa create_bucket learnjs.study.com`
-* deploy `$ ./sspa deploy_bucket learnjs.study.com`
+* create `$ ./sspa create_bucket learnjs.study.jp`
+* deploy `$ ./sspa deploy_bucket learnjs.study.jp`
 
