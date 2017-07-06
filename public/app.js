@@ -1,28 +1,39 @@
 'use script';
 var learnjs = {};
 
+learnjs.problems = [
+  {
+    description: "What is truth?",
+    dode: "function problem() { return __; }"
+  },
+  {
+    description: "Simple Math",
+    dode: "function problem() { return 42 === 6 * __; }"
+  }
+];
+
 learnjs.problemView = function (problemNumber) {
-    var view = $('.templates .problem-view').clone();
-    view.find('.title').text('Problem #' + problemNumber + ' Coming soon!');
-    return view;
+  var view = $('.templates .problem-view').clone();
+  view.find('.title').text('Problem #' + problemNumber + ' Coming soon!');
+  return view;
 }
 
 learnjs.showView = function (hash) {
-    var routes = {
-        '#problem' : learnjs.problemView
-    };
+  var routes = {
+      '#problem' : learnjs.problemView
+  };
 
-    var hashParts = hash.split('-');
-    var viewFn = routes[hashParts[0]];
+  var hashParts = hash.split('-');
+  var viewFn = routes[hashParts[0]];
 
-    if (viewFn) {
-        $('.view-container').empty().append(viewFn(hashParts[1]));
-    }
+  if (viewFn) {
+      $('.view-container').empty().append(viewFn(hashParts[1]));
+  }
 }
 
 learnjs.appOnReady = function () {
-    window.onhashchange = function () {
-      learnjs.showView(window.location.hash);
-    };
+  window.onhashchange = function () {
     learnjs.showView(window.location.hash);
+  };
+  learnjs.showView(window.location.hash);
 }
