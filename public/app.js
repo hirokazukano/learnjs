@@ -64,6 +64,19 @@ learnjs.showView = function (hash) {
   }
 };
 
+
+learnjs.buildCorrectFlash = function (problemNum) {
+  var correctFlash = learnjs.template('correct-flash');
+  var link = correctFlash.find('a');
+  if (problemNum < learnjs.problems.length) {
+    link.attr('href', '#problem-' + (problemNum + 1));
+  } else {
+    link.attr('href', '');
+    link.text("You're Finished!");
+  }
+  return correctFlash;
+}
+
 learnjs.appOnReady = function () {
   window.onhashchange = function () {
     learnjs.showView(window.location.hash);
