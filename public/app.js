@@ -1,4 +1,5 @@
 'use script';
+
 var learnjs = {};
 
 learnjs.problems = [
@@ -12,15 +13,34 @@ learnjs.problems = [
   }
 ];
 
+learnjs.template = function (name) {
+  return $('.templates .' + name);
+};
+
 learnjs.applyObject = function (obj, elem) {
   for (var key in obj) {
     elem.find('[data-name="' + key + '"]').text(obj[key]);
   }
-};
+}
 
-learnjs.template = function (name) {
-  return $('.templates .' + name);
-};
+learnjs.flashElement = function (elem, content) {
+  elem.fadeOut('fast', function () {
+    elem.html(content);
+    elem.fadeIn()
+  });
+}
+
+learnjs.buildCorrectFlash = function (problemNum) {
+  var correctFlash = learnjs.template('correct-flash');
+  var link = correctFlash.find('a');
+  if (problemNum < learnjs.problems.length) {
+    link.attr('href', '#problem-' + (problemNum + 1));
+  } else {
+    link.attr('href', '');
+    link.text("You're Finished!");
+  }
+  return correctFlash;
+}
 
 learnjs.problemView = function (data) {
   var problemNumber = parseInt(data, 10);
@@ -51,30 +71,22 @@ learnjs.problemView = function (data) {
   return view;
 }
 
+learnjs.landingView = function () {
+  return learnjs.template('landing-view');
+}
+
 learnjs.showView = function (hash) {
   var routes = {
-      '#problem' : learnjs.problemView
+    '#problem' : learnjs.problemView,
+    '': learnjs.landingView
   };
 
   var hashParts = hash.split('-');
   var viewFn = routes[hashParts[0]];
 
   if (viewFn) {
-      $('.view-container').empty().append(viewFn(hashParts[1]));
+    $('.view-container').empty().append(viewFn(hashParts[1]));
   }
-};
-
-
-learnjs.buildCorrectFlash = function (problemNum) {
-  var correctFlash = learnjs.template('correct-flash');
-  var link = correctFlash.find('a');
-  if (problemNum < learnjs.problems.length) {
-    link.attr('href', '#problem-' + (problemNum + 1));
-  } else {
-    link.attr('href', '');
-    link.text("You're Finished!");
-  }
-  return correctFlash;
 }
 
 learnjs.appOnReady = function () {
@@ -82,11 +94,4 @@ learnjs.appOnReady = function () {
     learnjs.showView(window.location.hash);
   };
   learnjs.showView(window.location.hash);
-};
-
-learnjs.flashElement = function (elem, content) {
-  elem.fadeOut('fast', function () {
-    elem.html(content);
-    elem.fadeIn()
-  });
-};
+}
