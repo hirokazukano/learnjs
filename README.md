@@ -32,4 +32,4 @@ deploy url: [http://learnjs.study.jp.s3-website-ap-northeast-1.amazonaws.com/](h
 
 `./sspa create_pool conf/cognito/identity_pools/learnjs`を実行
 * assume_role_policy.json,pool_info.json,role_info.jsonが作成される
-* awsに新しいroleが作成される
+* awsに新しいroleとGognitoにFederate Identitiesが作成される
