@@ -19,6 +19,8 @@ deploy url: [http://learnjs.study.jp.s3-website-ap-northeast-1.amazonaws.com/](h
 
 #### Google認証設定
 
+[Integrating Google Sign-In into your web app](https://developers.google.com/identity/sign-in/web/sign-in)
+
 1. [Google Developers Consoleにログイン](https://console.developers.google.com)
 2. プロジェクトを作成
 3. 「APIを有効にする」を選択

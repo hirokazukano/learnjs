@@ -1,6 +1,10 @@
 'use script';
 
-var learnjs = {};
+var learnjs = {
+  poolId: 'ap-northeast-1:72973938-ef43-4314-9793-44bb10e44ac7'
+};
+
+learnjs.identity = new $.Deferred();
 
 learnjs.problems = [
   {
@@ -111,6 +115,20 @@ learnjs.appOnReady = function () {
   learnjs.showView(window.location.hash);
 }
 
-function googleSignIn() {
-  console.log(arguments)
+function googleSignIn(googleUser) {
+  var id_token = googleUser.getAuthResponse().id_token;
+  console.log(id_token);
+  AWS.config.update({
+    region: 'us-east-1',
+    credentials: new AWS.CognitoIdentityCredentials({
+      IdentityPoolId: learnjs.poolId,
+      Logins: {
+        'accounts.google.com': id_token
+      }
+    })
+  })
+
+  console.log('googleSignIn!!');
 }
+
+
